@@ -12,22 +12,22 @@ let url = "https://jsonkeeper.com/b/6UK7"
 
 let json = """
 [{
-    "name": "Hari",
+    "name": "Sivakasi",
     "img" : "imga"
 }, {
-    "name": "Prasath",
+    "name": "Bangalore",
     "img" : "imgb"
 }, {
-    "name": "Balachandran",
+    "name": "Chennai",
     "img" : "imgc"
 }, {
-    "name": "Chellapandian",
+    "name": "Madurai",
     "img" : "imgd"
 }, {
-    "name": "Ramya",
+    "name": "Trichy",
     "img" : "imge"
 }, {
-    "name": "Mithurshaa",
+    "name": "Kanchipuram",
     "img" : "imgf"
 }]
 """
@@ -41,9 +41,19 @@ struct list: Hashable, Codable {
 
 struct TableList: View {
     var body: some View {
-        List(listItem,id: \.name) { item in
-            TableRow(title: item.name, image: item.img)
+        NavigationView {
+            List(listItem,id: \.name) { item in
+                HStack {
+                    NavigationLink() {
+                        LandMarkDetail()
+                    } label: {
+                    TableRow(title: item.name, image: item.img)
+                    }
+                }
+            }
         }
+        .padding(-10)
+        
     }
 }
 
